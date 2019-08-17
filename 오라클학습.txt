@@ -1,0 +1,63 @@
+SQL> --单捞磐海捞胶 积己
+SQL> create tablespace nodespace
+  2  datafile 'C:\oraclexe\app\oracle\oradata\XE\nodespace.dbf'
+  3  size 20m;
+
+Tablespace created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create tablespace nodespace
+  2  datafile 'C:\oraclexe\app\oracle\oradata\XE\nodespace.dbf'
+  3  size 20m
+  4  --蜡历积己
+  5  create user node 
+  6  identified by node
+  7  default tablespace nodespace
+  8* quota unlimited onnodespace
+  9  /
+create user node 
+    *
+ERROR at line 5:
+ORA-02180: invalid option for CREATE TABLESPACE 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --蜡历积己
+  2  create user node 
+  3  identified by node
+  4  default tablespace nodespace
+  5* quota unlimited onnodespace
+SQL> /
+quota unlimited onnodespace
+                    *
+ERROR at line 5:
+ORA-00969: missing ON keyword 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --蜡历积己
+  2  create user node 
+  3  identified by node
+  4  default tablespace nodespace
+  5* quota unlimited on nodespace
+SQL> 
+SQL> /
+
+User created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  --立加 鼻茄 殿 鞘夸茄 鼻茄 何咯
+  2* grant create session, create table to node
+SQL> /
+
+Grant succeeded.
+
+SQL> spool off

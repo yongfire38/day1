@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width:400px;
+            height:450px;
+            background: yellow;
+        }
+        textarea{
+            width:98%;
+            height:400px;
+        }
+        input{
+            width:98%;
+            height:40px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> <!-- include socket.io client side script -->
+    <script>
+        var socket; //소켓이란 대화용 전화기와 같다..
+
+        //문서가 로드되면
+        $(function(){
+            $("button").click(function(){
+                socket = io(); //접속 및 소켓 생성
+            });
+
+            $("input").on("keyup", function(e){
+                if(e.keyCode ==13){
+                    //서버에 데이터 전송
+                    var data = $(this).val();
+
+                    //전송 시 사용되는 메서드
+                    socket.emit("message", data);
+                }
+            });
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <button>접속</button>
+        <p>
+        <textarea></textarea>
+        <input type="text">
+    </div>
+</body>
+
+</html>
